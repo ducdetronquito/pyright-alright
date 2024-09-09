@@ -3,7 +3,9 @@ import logging
 import subprocess
 import sys
 import zipfile
+from argparse import ArgumentParser
 from contextlib import chdir
+from http.client import HTTPSConnection
 from io import BytesIO
 from urllib import request
 
@@ -97,10 +99,47 @@ def move_pyright_artifacts_to_pyright_alright(pyright_version: str):
         return
 
 
-def main():
-    clean_existing_pyright_artifacts()
+def get_latest_pyright_version() -> str:
+    host = "github.com"
+    conn = HTTPSConnection(host)
+    try:
+        conn.request(
+            "GET", "/microsoft/pyright/releases/latest", headers={"Host": host}
+        )
+        response = conn.getresponse()
+        location_header = response.headers["location"]
+    finally:
+        conn.close()
 
-    pyright_version = "1.1.378"
+    latest_version = location_header.replace(
+        "https://github.com/microsoft/pyright/releases/tag/", ""
+    )
+
+    return latest_version
+
+
+def get_cli_arg_parser() -> ArgumentParser:
+    parser = ArgumentParser(
+        prog=__file__, description="Repackage Pyright with bun as Python wheels"
+    )
+    parser.add_argument(
+        "pyright_version",
+        help="Pyright version to package",
+    )
+
+    return parser
+
+
+def main():
+    cli_args = get_cli_arg_parser().parse_args()
+
+    pyright_version: str = cli_args.pyright_version
+    if pyright_version == "latest":
+        pyright_version = get_latest_pyright_version()
+
+    logger.info(f"Request to build Pyright {pyright_version}")
+
+    clean_existing_pyright_artifacts()
 
     pyright_archive = get_pyright_archive(pyright_version)
 
