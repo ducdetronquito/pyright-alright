@@ -1,0 +1,38 @@
+name: "Test"
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  test:
+    name: Test building latest pyright version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.8.3
+      - name: Install dev dependencies
+        run: poetry install
+
+      - name: Build the latest Pyright version
+        run: poetry run python scripts/build_pyright.py latest
+
+      - name: Build the wheel
+        run: poetry build --format wheel
+
+      - name: Install the wheel
+        run: |
+          pip install --no-index --find-links $(pwd)/dist/ pyright_alright
+
+      - name: Test the latest Pyright on a file
+        run: |
+          pyright ./pyright_alright/main.py --verbose
