@@ -7,4 +7,12 @@
 # Wheel output directory
 dist/
 
+# Dev env variables
 .env
+
+# Temp directory to build pyright
+temp/
+
+# Bundled Pyright artifacts
+pyright_alright/pyright/dist/
+pyright_alright/pyright/index.js

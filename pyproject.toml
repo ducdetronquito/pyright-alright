@@ -5,6 +5,17 @@ description = "Pyright type checker, packaged for Python 🍞 + 🐍 + 🪨 = �
 authors = ["ducdetronquito <guillaume.paulet@giome.fr>"]
 license = "The Unlicense"
 readme = "README.md"
+include = [
+    "pyright_alright/**/*",
+]
+exclude = [
+    "pyright_alright/pyright/.gitkeep",
+]
+
+[tool.poetry.scripts]
+pyright = 'pyright_alright.main:pyright'
+pyright_alright = 'pyright_alright.main:pyright'
+pyright-alright = 'pyright_alright.main:pyright'
 
 [tool.poetry.dependencies]
 python = "^3.9"
