@@ -16,3 +16,8 @@ temp/
 # Bundled Pyright artifacts
 pyright_alright/pyright/dist/
 pyright_alright/pyright/index.js
+
+
+# Tests artifacts on CI
+tests/pyproject.toml
+tests/poetry.lock
