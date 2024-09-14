@@ -28,11 +28,14 @@ jobs:
 
       - name: Build the wheel
         run: poetry build --format wheel
+      
+      - name: Print latest built wheel
+        run: ls -AU dist/ | head -1
 
-      - name: Install the wheel
+      - name: Install the wheel and test it 
         run: |
-          pip install --no-index --find-links $(pwd)/dist/ pyright_alright
+          mkdir test_wheel \
+          && poetry init --quiet --name test_wheel --directory test_wheel/ \
+          && poetry add --editable ../dist/$(ls -AU dist/ | head -1) --directory test_wheel/ \
+          && poetry run --directory test_wheel/ pyright -- pyright_alright/main.py --verbose 
 
-      - name: Test the latest Pyright on a file
-        run: |
-          pyright ./pyright_alright/main.py --verbose
