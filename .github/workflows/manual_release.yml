@@ -1,0 +1,41 @@
+name: "Manual release"
+
+on:
+  workflow_dispatch:
+    inputs:
+      pyright_version:
+        description: "Pyright version"
+        required: true
+        type: string
+
+jobs:
+  manual_release:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.8.3
+      - name: Install dev dependencies
+        run: poetry install
+
+      - name: Bump pyright-alright version according to underlying pyright version
+        run: poetry version ${{ inputs.pyright_version }}
+
+      - name: Build the wheel
+        run: poetry run python src/build_pyright.py ${{ inputs.pyright_version }}
+
+      - name: See whats have been build
+        run: ls -al dist
+
+      # - name: Publish on PyPI
+      #   run: poetry run twine upload dist/*
+      #   env:
+      #     TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
+      #     TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}

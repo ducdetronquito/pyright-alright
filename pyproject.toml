@@ -1,5 +1,9 @@
 [tool.poetry]
 name = "pyright-alright"
+# The version is bump automatically when releasing pyright-alright
+# based on the corresponding pyright version.
+# Pyright-alright version can have a potential suffix (like alpha1, post0, etc...)
+# used to either test a release or fix an existing release.
 version = "0.1.0"
 description = "Pyright type checker, packaged for Python 🍞 + 🐍 + 🪨 = 🚀"
 authors = ["ducdetronquito <guillaume.paulet@giome.fr>"]
