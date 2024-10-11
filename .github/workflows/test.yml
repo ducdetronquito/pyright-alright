@@ -28,11 +28,20 @@ jobs:
 
       - name: Build the wheel
         run: poetry build --format wheel
+      
+      - name: Print latest built wheel
+        run: ls -AU dist/ | head -1
 
-      - name: Install the wheel
+      - name: Install the wheel in the tests directory
         run: |
-          pip install --no-index --find-links $(pwd)/dist/ pyright_alright
+          poetry init --quiet --name tests_ci --directory tests/ \
+          && poetry add --editable ../dist/$(ls -AU dist/ | head -1) --directory tests/
 
-      - name: Test the latest Pyright on a file
+      - name: Test successful typecheck
         run: |
-          pyright ./pyright_alright/main.py --verbose
+          poetry run --directory tests/ pyright -- tests/success.py | grep "0 errors, 0 warnings, 0 informations"
+      
+      - name: Test erroneous typecheck
+        run: |
+          poetry run --directory tests/ pyright -- tests/error.py | grep "1 error, 0 warnings, 0 informations"  
+
