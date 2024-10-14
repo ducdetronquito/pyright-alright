@@ -90,3 +90,11 @@ Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`
 - No installation or network calls is done when running the CLI
 - No unwanted warnings about new pyright version available
 - Just a working pyright CLI
+
+
+License
+-------
+
+pyright-alright itself is released under [The Unlicense license](https://choosealicense.com/licenses/unlicense/).
+
+pyright [has its own licence](https://github.com/microsoft/pyright/blob/main/LICENSE.txt).
