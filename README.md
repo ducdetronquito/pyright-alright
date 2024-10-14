@@ -1,5 +1,8 @@
 # Pyright-alright
 
+![PyPI](https://img.shields.io/pypi/v/pyright-alright)
+![Supported python versions](https://img.shields.io/pypi/pyversions/pyright-alright)
+
 **The pyright type checker, packaged for Python** 🍞 + 🐍 + 🪨 = 🚀 
 
 [Pyright](https://github.com/microsoft/pyright) is a full-featured, standards-based static type checker for Python. It is designed for high performance and can be used with large Python source bases.
