@@ -17,9 +17,9 @@ exclude = [
 ]
 
 [tool.poetry.scripts]
-pyright = 'pyright_alright.main:pyright'
-pyright_alright = 'pyright_alright.main:pyright'
-pyright-alright = 'pyright_alright.main:pyright'
+pyright = 'pyright_alright.__main__:pyright'
+pyright_alright = 'pyright_alright.__main__:pyright'
+pyright-alright = 'pyright_alright.__main__:pyright'
 
 [tool.poetry.dependencies]
 python = "^3.9"
