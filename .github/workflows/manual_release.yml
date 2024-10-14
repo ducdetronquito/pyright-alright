@@ -8,6 +8,10 @@ on:
         required: true
         type: string
 
+      pyright_alright_version_suffix:
+        description: "Ex: alpha1, alpha2, post1, etc..."
+        type: string
+
 jobs:
   manual_release:
     strategy:
@@ -26,7 +30,7 @@ jobs:
         run: poetry install
 
       - name: Bump pyright-alright version according to underlying pyright version
-        run: poetry version ${{ inputs.pyright_version }}
+        run: poetry version ${{ inputs.pyright_version }}.${{ inputs.pyright_alright_version_suffix }}
 
       - name: Build the wheel
         run: poetry run python src/build_pyright.py ${{ inputs.pyright_version }}
