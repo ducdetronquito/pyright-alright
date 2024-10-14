@@ -30,9 +30,6 @@ jobs:
 
       - name: Build the wheel
         run: poetry build --format wheel
-      
-      - name: Print latest built wheel
-        run: ls -AU dist/ | head -1
 
       - name: Install the wheel in the tests directory
         run: |
