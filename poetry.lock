@@ -99,16 +99,16 @@ virtualenv = ">=20.10.0"
 
 [[package]]
 name = "pybun"
-version = "1.1.25"
+version = "1.1.30"
 description = "Bun is an all-in-one toolkit for JavaScript and TypeScript apps."
 optional = false
 python-versions = "~=3.9"
 files = [
-    {file = "pybun-1.1.25-py3-none-macosx_12_0_arm64.whl", hash = "sha256:320c2f70c45e80dee57c269688e8f022b6f7c16fa45590f981a8d306706fcf65"},
-    {file = "pybun-1.1.25-py3-none-macosx_12_0_x86_64.whl", hash = "sha256:9610a2ca4d3e93cc2a366a469d50316d7b045181d1a0a065c30b1d0bf87a8ee9"},
-    {file = "pybun-1.1.25-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.musllinux_1_1_x86_64.whl", hash = "sha256:f3fdf715d501c8b5ba68f07c6b5f293667a4f775891cd02b1911d3436ee7ff22"},
-    {file = "pybun-1.1.25-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl", hash = "sha256:69905229bc8d701db7990b2610d29222e7d3883248734daf86ffcffca82c080a"},
-    {file = "pybun-1.1.25-py3-none-win_amd64.whl", hash = "sha256:54952c0afc49518f5a53177b68184df0663a7d78c6db2f22fdcabb32000d5966"},
+    {file = "pybun-1.1.30-py3-none-macosx_12_0_arm64.whl", hash = "sha256:07154437a1cd5a2f9b75a2dd53f185691a7e36b70996f9e7b07512eb8739955c"},
+    {file = "pybun-1.1.30-py3-none-macosx_12_0_x86_64.whl", hash = "sha256:09acb23c75cdcdbe486aa3adaa2e780a891ae9f7992a07d3d273b5aaec6da5a4"},
+    {file = "pybun-1.1.30-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.musllinux_1_1_x86_64.whl", hash = "sha256:b586b4c1681c483aad73a87ffad485f0496a495eae6044a5b251c06ec95e7fda"},
+    {file = "pybun-1.1.30-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl", hash = "sha256:357294778e7eb4c77b616eb77e40a621fe794fb8b5c003013fdf9cdaa6aa7552"},
+    {file = "pybun-1.1.30-py3-none-win_amd64.whl", hash = "sha256:b3c7d0eef26afef1538cf9d2be99341b45309aceedb44d61917651625acbdaa0"},
 ]
 
 [[package]]
@@ -223,4 +223,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "21d10275dcddb17fd17eca8ddeaea4bc00de60933aa61ce93c4298c5aff975d5"
+content-hash = "e1ddb376acd2753310acf6578791d82537f38abe49b7964a82f7283dea4ea430"

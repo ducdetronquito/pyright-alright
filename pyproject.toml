@@ -23,7 +23,7 @@ pyright-alright = 'pyright_alright.__main__:pyright'
 
 [tool.poetry.dependencies]
 python = "^3.9"
-pybun = "1.1.25"
+pybun = "^1.1"
 
 
 [tool.poetry.group.dev.dependencies]
