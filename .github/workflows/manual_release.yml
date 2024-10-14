@@ -32,11 +32,11 @@ jobs:
       - name: Bump pyright-alright version according to underlying pyright version
         run: poetry version ${{ inputs.pyright_version }}.${{ inputs.pyright_alright_version_suffix }}
 
-      - name: Build the wheel
+      - name: Build pyright
         run: poetry run python src/build_pyright.py ${{ inputs.pyright_version }}
 
-      - name: See whats have been build
-        run: ls -al pyright_alright/pyright/dist
+      - name: Build the Python wheel
+        run: poetry build --format wheel
 
       - name: Publish on PyPI
         run: |
