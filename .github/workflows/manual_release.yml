@@ -32,7 +32,7 @@ jobs:
         run: poetry run python src/build_pyright.py ${{ inputs.pyright_version }}
 
       - name: See whats have been build
-        run: ls -al dist
+        run: ls -al pyright_alright/pyright/dist
 
       # - name: Publish on PyPI
       #   run: poetry run twine upload dist/*
