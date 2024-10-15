@@ -57,7 +57,28 @@ def install_pyright_dependencies(pyright_version: str):
     logger.info(f"Install pyright {pyright_version} dependencies")
 
     with chdir(f"./temp/pyright-{pyright_version}"):
-        return_code = subprocess.call([sys.executable, "-m", "pybun", "install"])
+        return_code = subprocess.call(
+            [sys.executable, "-m", "pybun", "install", "--ignore-scripts"]
+        )
+        if return_code != 0:
+            logger.error(f"Failed with code {return_code}")
+            return sys.exit(return_code)
+
+    with chdir(f"./temp/pyright-{pyright_version}"):
+        return_code = subprocess.call(
+            [
+                "pybun",
+                "run",
+                "cross-env",
+                "SKIP_LERNA_BOOTSTRAP=yes",
+                "lerna",
+                "exec",
+                "--no-bail",
+                "pybun",
+                "install",
+            ]
+        )
+
         if return_code != 0:
             logger.error(f"Failed with code {return_code}")
             return sys.exit(return_code)
