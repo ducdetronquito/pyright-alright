@@ -29,7 +29,7 @@ def clean_existing_pyright_artifacts():
     )
     if return_code != 0:
         logger.error(f"Failed with code {return_code}")
-        return
+        return sys.exit(return_code)
 
 
 def get_pyright_archive(pyright_version: str) -> bytes:
@@ -60,7 +60,7 @@ def install_pyright_dependencies(pyright_version: str):
         return_code = subprocess.call([sys.executable, "-m", "pybun", "install"])
         if return_code != 0:
             logger.error(f"Failed with code {return_code}")
-            return
+            return sys.exit(return_code)
 
 
 def build_pyright(pyright_version: str):
@@ -70,7 +70,7 @@ def build_pyright(pyright_version: str):
         return_code = subprocess.call([sys.executable, "-m", "pybun", "run", "build"])
         if return_code != 0:
             logger.error(f"Failed with code {return_code}")
-            return
+            return sys.exit(return_code)
 
 
 def move_pyright_artifacts_to_pyright_alright(pyright_version: str):
@@ -85,7 +85,7 @@ def move_pyright_artifacts_to_pyright_alright(pyright_version: str):
     )
     if return_code != 0:
         logger.error(f"Failed with code {return_code}")
-        return
+        return sys.exit(return_code)
 
     return_code = subprocess.call(
         [
@@ -96,7 +96,7 @@ def move_pyright_artifacts_to_pyright_alright(pyright_version: str):
     )
     if return_code != 0:
         logger.error(f"Failed with code {return_code}")
-        return
+        return sys.exit(return_code)
 
 
 def get_latest_pyright_version() -> str:
